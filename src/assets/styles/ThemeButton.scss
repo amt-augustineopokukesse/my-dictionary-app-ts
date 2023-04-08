@@ -1,0 +1,17 @@
+.theme-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: transform 0.2s ease;
+  
+    &:hover {
+      transform: scale(1.2);
+    }
+  
+    img {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+  

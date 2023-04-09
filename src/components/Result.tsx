@@ -36,19 +36,21 @@ interface ResultProps {
 
 
 const Result: React.FC<ResultProps> = ({ wordData }) => {
-  const firstWordData = wordData;
   return (
     <div className="result">
       <div className='wordNAudio'>
         <div className='word'>
-          <h1>{firstWordData.word}</h1>
-          <p>{firstWordData.phonetic}</p>
+          <h1>{wordData.word}</h1>
+          <p>{wordData.phonetic}</p>
         </div>
         <div className='audio'>
-          <AudioPlayer audioUrl={firstWordData.phonetics?.find((phonetic) => phonetic.audio !== '')?.audio || ''} />
+          {/* <AudioPlayer audioUrl={wordData.phonetics?.find((phonetic) => phonetic.audio !== '')?.audio || ''} /> */}
+          {wordData.phonetics.find((phonetic) => phonetic.audio !== '') && (
+            <AudioPlayer audioUrl={wordData.phonetics.find((phonetic) => phonetic.audio !== '')?.audio || ''} />
+          )}
         </div>
       </div>
-      {firstWordData.meanings.map((meaning, index) => (
+      {wordData.meanings.map((meaning, index) => (
         <div key={index}>
           <h2>{meaning.partOfSpeech}</h2>
           {meaning.definitions.map((definition, index) => (
@@ -94,13 +96,13 @@ const Result: React.FC<ResultProps> = ({ wordData }) => {
         </div>
       ))}
       <p>
-        License: {firstWordData.license.name}{' '}
-        <a href={firstWordData.license.url}>{firstWordData.license.url}</a>
+        License: {wordData.license.name}{' '}
+        <a href={wordData.license.url}>{wordData.license.url}</a>
       </p>
-      {firstWordData.sourceUrls.length > 0 && (
+      {wordData.sourceUrls.length > 0 && (
         <p>
           Source(s):{' '}
-          {firstWordData.sourceUrls.map((sourceUrl, index) => (
+          {wordData.sourceUrls.map((sourceUrl, index) => (
             <a key={index} href={sourceUrl}>
               {sourceUrl}{' '}
             </a>

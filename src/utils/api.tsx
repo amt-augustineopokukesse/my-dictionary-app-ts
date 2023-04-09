@@ -38,7 +38,7 @@ export async function getDefinition(word: string): Promise<Definition[]> {
   try {
     const url = `${BASE_URL}/${word}`;
     const response = await axios.get(url);
-    return response.data;
+    return [response.data[0]];
   } catch(Error) {
     console.error(Error)
     return Promise.reject(Error);

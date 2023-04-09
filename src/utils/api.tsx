@@ -16,13 +16,22 @@ export interface Definition {
     synonyms: string[];
     antonyms: string[];
   }[];
-  phonetics: { text: string; audio: string }[];
+  phonetics: {
+    text: string;
+    audio: string;
+    sourceUrl?: string;
+    license?: {
+      name: string;
+      url: string;
+    };
+  }[];
   license: {
     name: string;
     url: string;
   };
   sourceUrls: string[];
 }
+
 
 
 export async function getDefinition(word: string): Promise<Definition[]> {

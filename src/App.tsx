@@ -41,6 +41,8 @@ const App: React.FC = () => {
             wordData={definition}
           />
         ))
+        //<Result wordData={definitions[0]} />
+
       )}
     </div>
   );

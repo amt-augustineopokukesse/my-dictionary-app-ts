@@ -1,36 +1,116 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import AudioPlayer from './AudioPlayer';
 import '../assets/styles/Result.scss';
 
 interface ResultProps {
-  word: string;
-  definitions: {
-    definition: string;
-    example?: string;
-    pronunciation?: string;
-    audioUrl?: string;
-  }[];
+  wordData: {
+    word: string;
+    phonetic: string;
+    meanings: {
+      partOfSpeech: string;
+      definitions: {
+        definition: string;
+        synonyms: string[];
+        antonyms: string[];
+        example?: string;
+      }[];
+      synonyms: string[];
+      antonyms: string[];
+    }[];
+    phonetics: {
+      text: string;
+      audio: string;
+      sourceUrl?: string;
+      license?: {
+        name: string;
+        url: string;
+      };
+    }[];
+    license: {
+      name: string;
+      url: string;
+    };
+    sourceUrls: string[];
+  };
 }
 
-const Result: React.FC<ResultProps> = ({ word, definitions=[] }) => {
+
+const Result: React.FC<ResultProps> = ({ wordData }) => {
   return (
     <div className="result">
-      <div>
-      <h1>{word}</h1>
-
+      <div className='wordNAudio'>
+        <div>
+          <h1>{wordData.word}</h1>
+          <p>{wordData.phonetic}</p>
+        </div>
+        <div className='audio'>
+          {wordData.phonetics.map((phonetic, index) => (
+            <p key={index}>
+              {/* {phonetic.text}{' '} */}
+              {phonetic.audio && <AudioPlayer audioUrl={phonetic.audio} />}
+            </p>
+          ))}
+        </div>
       </div>
-      
-      {definitions.map((def, index) => (
-        <div key={index} className="definition">
-          <p>{def.definition}</p>
-          {def.example && <p className="example">{def.example}</p>}
-          {def.pronunciation && <p className="pronunciation">{def.pronunciation}</p>}
-          {def.audioUrl && (
-            <AudioPlayer audioUrl={def.audioUrl} />
+      {wordData.meanings.map((meaning, index) => (
+        <div key={index}>
+          <h2>{meaning.partOfSpeech}</h2>
+          {meaning.definitions.map((definition, index) => (
+            <div key={index} className="definition">
+              <p>{definition.definition}</p>
+              {definition.example && (
+                <p className="example">{definition.example}</p>
+              )}
+              {definition.synonyms.length > 0 && (
+                <p>
+                  Synonyms:{' '}
+                  {definition.synonyms.map((synonym, index) => (
+                    <span key={index}>{synonym}, </span>
+                  ))}
+                </p>
+              )}
+              {definition.antonyms.length > 0 && (
+                <p>
+                  Antonyms:{' '}
+                  {definition.antonyms.map((antonym, index) => (
+                    <span key={index}>{antonym}, </span>
+                  ))}
+                </p>
+              )}
+            </div>
+          ))}
+          {meaning.synonyms.length > 0 && (
+            <p>
+              Synonyms:{' '}
+              {meaning.synonyms.map((synonym, index) => (
+                <span key={index}>{synonym}, </span>
+              ))}
+            </p>
+          )}
+          {meaning.antonyms.length > 0 && (
+            <p>
+              Antonyms:{' '}
+              {meaning.antonyms.map((antonym, index) => (
+                <span key={index}>{antonym}, </span>
+              ))}
+            </p>
           )}
         </div>
       ))}
+      <p>
+        License: {wordData.license.name}{' '}
+        <a href={wordData.license.url}>{wordData.license.url}</a>
+      </p>
+      {wordData.sourceUrls.length > 0 && (
+        <p>
+          Source(s):{' '}
+          {wordData.sourceUrls.map((sourceUrl, index) => (
+            <a key={index} href={sourceUrl}>
+              {sourceUrl}{' '}
+            </a>
+          ))}
+        </p>
+      )}
     </div>
   );
 };

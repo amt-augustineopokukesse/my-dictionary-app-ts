@@ -37,8 +37,8 @@ const App: React.FC = () => {
         definitions.map((definition) => (
           <Result
             key={definition.word}
-            word={definition.word}
-            definitions={definition.meanings.flatMap((m) => m.definitions)}
+            // word={definition.word}
+            wordData={definition}
           />
         ))
       )}

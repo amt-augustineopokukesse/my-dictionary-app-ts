@@ -1,5 +1,12 @@
 .result {
-    h1{
-        font-size: 64px;
+    .wordNAudio{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1{
+            font-size: 64px;
+        }
+        
     }
+    
 }

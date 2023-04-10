@@ -1,6 +1,7 @@
 import React from 'react';
 import AudioPlayer from './AudioPlayer';
 import '../assets/styles/Result.scss';
+import newWindowIcon from '../assets/images/icon-new-window.svg'
 
 interface ResultProps {
   wordData: {
@@ -105,10 +106,11 @@ const Result: React.FC<ResultProps> = ({ wordData }) => {
       </p> */}
       {wordData.sourceUrls.length > 0 && (
         <p className='source-section'>
-          <span className='source-text'>Source(s):{' '}</span>
+          <span className='source-text'>Source:{' '}</span>
           {wordData.sourceUrls.map((sourceUrl, index) => (
-            <a key={index} href={sourceUrl}>
+            <a key={index} href={sourceUrl} target='_blank' rel="noreferrer">
               {sourceUrl}{' '}
+              <img src={newWindowIcon} alt="external link" />
             </a>
           ))}
         </p>

@@ -7,7 +7,85 @@
             font-size: 64px;
             margin: 20px 0px;
         }
+        .wordPhonetic{
+            color: #A445ED;
+            font-size: 24px;
+            margin: 20px 0px;
+            position: relative;
+            top: -10px;
+        }
         
     }
-    
+    .meanings{
+        .meanings_title{
+            font-size: 24px;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            &::after {
+                content: "";
+                flex-grow: 1;
+                height: 2px;
+                margin-left: 10px;
+                margin-top: 10px;
+                background-color: #E9E9E9; /* replace with your desired light grey color */
+            }
+        }
+        h3{
+            color: #757575;
+            font-size: 20px;
+            line-height: 24px;
+        }
+        ul{
+            .definition-section{
+                font-size: 18px;
+                li{
+                    &::marker{
+                        color: #8F19E8;
+                    }
+                }
+                .example{
+                    line-height: 24px;
+                    color: #757575;
+                }
+            }
+            
+        }
+        .synonym-section, .antonym-section{
+            margin: 40px 0px;
+            .synonym-text, .antonym-text{
+                font-size: 20px;
+                line-height: 24px;
+                color: #757575;
+            }
+            .synonym, .antonym {
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 24px;
+                color: #A445ED;
+            }
+        }
+    }
+    .source-section {
+        position: relative;
+        margin-top: 40px;
+        font-size: 14px;
+        &::before {
+          content: "";
+          position: absolute;
+          top: -10px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #E9E9E9;
+        }
+        .source-text{
+            
+            color: #757575;
+        }
+        a{
+            text-decoration: none;
+            color: #2D2D2D;
+        }
+    }
 }

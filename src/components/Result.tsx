@@ -41,7 +41,7 @@ const Result: React.FC<ResultProps> = ({ wordData }) => {
       <div className='wordNAudio'>
         <div className='word'>
           <h1>{wordData.word}</h1>
-          <p>{wordData.phonetic}</p>
+          <p className='wordPhonetic'>{wordData.phonetic}</p>
         </div>
         <div className='audio'>
           {/* <AudioPlayer audioUrl={wordData.phonetics?.find((phonetic) => phonetic.audio !== '')?.audio || ''} /> */}
@@ -51,57 +51,61 @@ const Result: React.FC<ResultProps> = ({ wordData }) => {
         </div>
       </div>
       {wordData.meanings.map((meaning, index) => (
-        <div key={index}>
-          <h2>{meaning.partOfSpeech}</h2>
-          {meaning.definitions.map((definition, index) => (
-            <div key={index} className="definition">
-              <p>{definition.definition}</p>
-              {definition.example && (
-                <p className="example">{definition.example}</p>
-              )}
-              {definition.synonyms.length > 0 && (
-                <p>
-                  Synonyms:{' '}
-                  {definition.synonyms.map((synonym, index) => (
-                    <span key={index}>{synonym}, </span>
-                  ))}
-                </p>
-              )}
-              {definition.antonyms.length > 0 && (
-                <p>
-                  Antonyms:{' '}
-                  {definition.antonyms.map((antonym, index) => (
-                    <span key={index}>{antonym}, </span>
-                  ))}
-                </p>
-              )}
-            </div>
-          ))}
+        <div key={index} className='meanings'>
+          <h2 className='meanings_title'>{meaning.partOfSpeech}</h2>
+          <h3>Meaning</h3>
+          <ul> 
+            {meaning.definitions.map((definition, index) => (
+              <div key={index} className="definition-section">
+                {/* Each definition object for both noun and verb */}
+                <li><p>{definition.definition}</p></li>
+                {definition.example && (
+                  <p className="example">{`"${definition.example}"`}</p>
+                )}
+                {definition.synonyms.length > 0 && (
+                  <p>
+                    Synonyms:{' '}
+                    {definition.synonyms.map((synonym, index) => (
+                      <span key={index}>{synonym}, </span>
+                    ))}
+                  </p>
+                )}
+                {definition.antonyms.length > 0 && (
+                  <p>
+                    Antonyms:{' '}
+                    {definition.antonyms.map((antonym, index) => (
+                      <span key={index}>{antonym}, </span>
+                    ))}
+                  </p>
+                )}
+              </div>
+            ))}
+          </ul>
           {meaning.synonyms.length > 0 && (
-            <p>
-              Synonyms:{' '}
+            <p className='synonym-section'>
+              <span className='synonym-text'>Synonyms:{' '}</span> 
               {meaning.synonyms.map((synonym, index) => (
-                <span key={index}>{synonym}, </span>
+                <span key={index} className='synonym'>{synonym}, </span>
               ))}
             </p>
           )}
           {meaning.antonyms.length > 0 && (
-            <p>
-              Antonyms:{' '}
+            <p className='antonym-section'>
+              <span className='antonym-text'>Antonyms:{' '}</span>
               {meaning.antonyms.map((antonym, index) => (
-                <span key={index}>{antonym}, </span>
+                <span key={index} className='antonym'>{antonym}, </span>
               ))}
             </p>
           )}
         </div>
       ))}
-      <p>
+      {/* <p>
         License: {wordData.license.name}{' '}
         <a href={wordData.license.url}>{wordData.license.url}</a>
-      </p>
+      </p> */}
       {wordData.sourceUrls.length > 0 && (
-        <p>
-          Source(s):{' '}
+        <p className='source-section'>
+          <span className='source-text'>Source(s):{' '}</span>
           {wordData.sourceUrls.map((sourceUrl, index) => (
             <a key={index} href={sourceUrl}>
               {sourceUrl}{' '}

@@ -9,13 +9,23 @@ const FontSelector: React.FC = () => {
     document.body.style.fontFamily = event.target.value;
   };
 
+  // const handleSelectClick = () => {
+  //   const select = document.getElementById('font-selector') as HTMLSelectElement;
+  //   const options = select.querySelectorAll('option');
+  //   const backgroundColor = window.getComputedStyle(select).getPropertyValue('background-color');
+
+  //   options.forEach(option => {
+  //     option.style.backgroundColor = backgroundColor;
+  //   });
+  // };
+
   return (
-    <div>
+    <div className='container'>
       {/* <label htmlFor="font-selector">Choose a font:</label> */}
       <select id="font-selector" value={font} onChange={handleFontChange}>
         <option value="sans-serif">Sans-Serif</option>
         <option value="serif">Serif</option>
-        <option value="monospace">Monospace</option>
+        <option value="monospace">Mono</option>
       </select>
     </div>
   );

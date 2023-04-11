@@ -13,10 +13,13 @@ const ThemeButton: React.FC = () => {
 
   return (
     <button className="theme-button" onClick={handleThemeChange}>
+      <div className="toggle">
+        <div className={`toggle-indicator ${theme === 'light' ? 'off' : 'on'}`}></div>
+      </div>
       {theme === 'light' ? (
-        <img src= {moonIconDark} alt="light mode" />
+        <img src= {moonIcon} alt="dark mode" />
       ) : (
-        <img src={moonIcon} alt="dark mode" />
+        <img src={moonIconDark} alt="light mode" />
       )}
     </button>
   );

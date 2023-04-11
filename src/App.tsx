@@ -5,6 +5,7 @@ import Result from './components/Result';
 import NotFound from './components/NotFound';
 import { getDefinition, Definition } from './utils/api';
 import './App.scss';
+import ThemeProvider from './context/ThemeContext';
 
 const App: React.FC = () => {
   const [definitions, setDefinitions] = useState<Definition[]>([]);
@@ -28,24 +29,26 @@ const App: React.FC = () => {
   });
 
   return (
-    <div className="app">
-      <Header />
-      <SearchBar onSubmit={search} />
-      {error ? (
-        <NotFound />
-      ) : (
-        definitions.map((definition) => (
-          <Result
-            key={definition.word}
-            // word={definition.word}
-            wordData={definition}
-          />
-        ))
-        //<Result wordData={definitions[0]} />
-
-      )}
-    </div>
-  );
+    <ThemeProvider>
+      <div className="app">
+        <Header />
+        <SearchBar onSubmit={search} />
+        {error ? (
+          <NotFound />
+        ) : (
+          definitions.map((definition) => (
+            <Result
+              key={definition.word}
+              // word={definition.word}
+              wordData={definition}
+            />
+          ))
+          //<Result wordData={definitions[0]} />
+  
+        )}
+      </div>
+    </ThemeProvider>
+  ) as React.ReactElement;
 };
 
 export default App;

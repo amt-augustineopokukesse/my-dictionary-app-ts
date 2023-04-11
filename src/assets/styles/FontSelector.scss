@@ -1,10 +1,14 @@
-#font-selector{
+.container {
+  color: inherit;
+  background-color: inherit;
+  #font-selector{
     width: 120px;
     border: none;
     height: 24px;
     font-weight: 700;
     font-size: 18px;
-    color: #2D2D2D;
+    color: inherit;
+    background-color: inherit;
     cursor: pointer;
     background-image: url("../images/icon-arrow-down.svg");
     background-repeat: no-repeat;
@@ -26,4 +30,11 @@
       //border-top-color: #FBBF24;
     }
   }
+  // select {
+  //   background-color: inherit;
+  // }
   
+  // option {
+  //   background: yellow;
+  // }
+}

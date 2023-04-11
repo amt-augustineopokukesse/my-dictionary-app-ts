@@ -2,4 +2,26 @@
     border: none;
     background-color: inherit;
     cursor: pointer;
+    .play-icon {
+        svg {
+          circle {
+            transition: opacity 0.3s ease-in-out;
+          }
+          path {
+            transition: fill 0.3s ease-in-out;
+          }
+        }
+        &:hover {
+          svg {
+            circle {
+              opacity: 0.5;
+              fill: #A445ED;
+            }
+            path {
+              fill: #fff;
+            }
+          }
+        }
+      }
+      
 }

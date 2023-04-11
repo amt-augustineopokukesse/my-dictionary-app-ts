@@ -11,6 +11,7 @@ const App: React.FC = () => {
   const [definitions, setDefinitions] = useState<Definition[]>([]);
   const [error, setError] = useState<boolean>(false);
   console.log(definitions);
+  
   const search = async (searchTerm: string) => {
     try {
       const definitions = await getDefinition(searchTerm);

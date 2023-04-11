@@ -9,6 +9,14 @@ const ThemeButton: React.FC = () => {
 
   const handleThemeChange = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
+
+    const toggle = document.querySelector(".toggle") as HTMLElement;
+    if (theme === 'light'){
+      toggle.style.backgroundColor = '#A445ED';
+    }else {
+      toggle.style.backgroundColor = '';
+    }
+
   };
 
   return (

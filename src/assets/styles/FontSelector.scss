@@ -1,3 +1,5 @@
+@import '../../breakpoints.scss';
+
 .container {
   color: inherit;
   background-color: inherit;
@@ -17,6 +19,7 @@
     padding-right: 24px;
     font-family: inherit;
     appearance: none;
+    text-align: center;
     &:focus{
         outline: none;
     }
@@ -29,6 +32,10 @@
       border: 5px solid transparent;
       //border-top-color: #FBBF24;
     }
+    @include media ('<=phone'){
+      font-size: 14px;
+      width: 94px;
+  }
   }
   // select {
   //   background-color: inherit;

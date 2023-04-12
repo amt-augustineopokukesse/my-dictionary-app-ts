@@ -1,8 +1,18 @@
+@import 'breakpoints.scss';
 .app {
   //text-align: center;
   width: 50%;
   margin: 0 auto;
   padding-bottom: 120px;
+  @include media ('<=1100px'){
+    width: 60%;
+  }
+  @include media ('<=875px'){
+    width: 70%;
+  }
+  @include media ('<=768px'){
+    width: 90%;
+  }
 }
 
 

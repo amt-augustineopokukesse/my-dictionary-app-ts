@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
+    color: inherit;
+    background-color: inherit;
+    .headerRight{
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 56%;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          background-color: #E9E9E9; 
+          transform: translateX(-50%);
+        }
+      }
+      
+}

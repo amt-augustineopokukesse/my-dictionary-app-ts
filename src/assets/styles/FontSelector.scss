@@ -1,0 +1,47 @@
+@import '../../breakpoints.scss';
+
+.container {
+  color: inherit;
+  background-color: inherit;
+  #font-selector{
+    width: 120px;
+    border: none;
+    height: 24px;
+    font-weight: 700;
+    font-size: 18px;
+    color: inherit;
+    background-color: inherit;
+    cursor: pointer;
+    background-image: url("../images/icon-arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    background-size: 14px;
+    padding-right: 24px;
+    font-family: inherit;
+    appearance: none;
+    text-align: center;
+    &:focus{
+        outline: none;
+    }
+  
+    &:after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      right: 4px;
+      border: 5px solid transparent;
+      //border-top-color: #FBBF24;
+    }
+    @include media ('<=phone'){
+      font-size: 14px;
+      width: 94px;
+  }
+  }
+  // select {
+  //   background-color: inherit;
+  // }
+  
+  // option {
+  //   background: yellow;
+  // }
+}

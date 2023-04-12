@@ -17,20 +17,28 @@
         
     }
     .meanings{
-        .meanings_title{
+        .meanings_title {
             font-size: 24px;
             font-style: italic;
             display: flex;
             align-items: center;
             &::after {
-                content: "";
-                flex-grow: 1;
-                height: 2px;
-                margin-left: 10px;
-                margin-top: 10px;
-                background-color: #E9E9E9; /* replace with your desired light grey color */
+              content: "";
+              flex-grow: 1;
+              height: 2px;
+              margin-left: 10px;
+              margin-top: 10px;
+              background-color: #E9E9E9;
+              transition: background-color 0.3s ease;
             }
-        }
+          
+            &.dark::after {
+              background-color: #3A3A3A;
+            }
+          }
+          
+          
+          
         h3{
             color: #757575;
             font-size: 20px;
@@ -80,11 +88,13 @@
           height: 2px;
           background-color: #E9E9E9;
         }
-        .source-text{
-            
+        &.dark::before {
+            background-color: #3A3A3A;
+        }
+        .source-text{ 
             color: #757575;
         }
-        a{
+        .source-link{
             text-decoration: none;
             color: #2D2D2D;
             img{

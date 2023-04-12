@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AudioPlayer from './AudioPlayer';
 import '../assets/styles/Result.scss';
-import newWindowIcon from '../assets/images/icon-new-window.svg'
+import newWindowIcon from '../assets/images/icon-new-window.svg';
+import { useTheme } from '../context/ThemeContext';
 
 interface ResultProps {
   wordData: {
@@ -37,6 +38,29 @@ interface ResultProps {
 
 
 const Result: React.FC<ResultProps> = ({ wordData }) => {
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    const titles = document.querySelectorAll('.meanings_title') as NodeListOf<HTMLElement>;
+    titles.forEach((title) => {
+      if (theme === 'dark') {
+        title.classList.add('dark');
+      } else {
+        title.classList.remove('dark');
+      }
+    })
+
+    const sourceSection = document.querySelector('.source-section') as HTMLElement;
+    const sourceLink = document.querySelector('.source-link') as HTMLElement;
+    if (theme === 'dark') {
+      sourceSection.classList.add('dark');
+      sourceLink.style.color = '#FFFFFF';
+    } else {
+      sourceSection.classList.remove('dark');
+      sourceLink.style.color = '';
+    }
+  });
+
   return (
     <div className="result">
       <div className='wordNAudio'>
@@ -108,7 +132,7 @@ const Result: React.FC<ResultProps> = ({ wordData }) => {
         <p className='source-section'>
           <span className='source-text'>Source:{' '}</span>
           {wordData.sourceUrls.map((sourceUrl, index) => (
-            <a key={index} href={sourceUrl} target='_blank' rel="noreferrer">
+            <a key={index} href={sourceUrl} target='_blank' rel="noreferrer" className='source-link'>
               {sourceUrl}{' '}
               <img src={newWindowIcon} alt="external link" />
             </a>

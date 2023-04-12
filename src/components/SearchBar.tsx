@@ -32,7 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
     } else {
       try{
         onSubmit(searchTerm.trim());
-        setSearchTerm('');
+        //setSearchTerm('');
       } catch(Error) {
         console.log(Error)
       }

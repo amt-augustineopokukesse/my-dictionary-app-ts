@@ -7,15 +7,16 @@ interface AudioPlayerProps {
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
-  const handleClick = () => {
-    const audio = new Audio(audioUrl);
-    audio.play();
+
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+    const audio = new Audio(audioUrl); //Create new html audio element
+    audio.play();//play audio
   };
 
   return (
     <button onClick={handleClick} className='audioPlayButton'>
-      {/* <img src={playIcon} alt="Play icon" /> */}
-      <div className="play-icon">
+      {/* <img src={playIcon} alt="Play icon" /> */} 
+      <div className="play-icon"> 
         <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75">
           <g fill="#A445ED" fill-rule="evenodd">
             <circle cx="37.5" cy="37.5" r="37.5" opacity=".25"/>
@@ -23,7 +24,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
           </g>
         </svg>
       </div>
-      <audio src={audioUrl} />
+      {/* <audio src={audioUrl} /> */}
     </button>
   );
 };
